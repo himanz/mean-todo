@@ -12,8 +12,10 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 // configuration
+// load the database
+var database = require('./config/database')
 //  connect to mongoDB database on modulus.io
-mongoose.connect('mongodb://jonos:jonos@proximus.modulusmongo.net:27017/et4ojohO');
+mongoose.connect(database.url);
 // set the static files location
 app.use(express.static(__dirname + '/public'));
 // log every request to the console
