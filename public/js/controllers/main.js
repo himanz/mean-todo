@@ -1,14 +1,12 @@
 angular.module('todoController', [])
-  .controller('mainController', function($scope, $http) {
+  .controller('mainController', function($scope, $http, Todos) {
   	$scope.formData = {};
     
     // when landing on the page, get all todos and show them
-  	$http.get('/api/todos')
+    // use the service to get all the todos
+  	Todos.get()
   	  .success(function(data) {
-  	  	$scope.todos = data;
-  	  })
-  	  .error(function(data) {
-  	  	console.log('Error: ' + data);
+        $scope.todos = data;
   	  });
 
     // when submitting the add form, send the text to the node API
